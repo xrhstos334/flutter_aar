@@ -14,9 +14,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:7.0.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-//        classpath 'com.github.kezong:fat-aar:1.3.6'
     }
 }
+
 String localMavenPath = project.mkdir("build").absolutePath
 rootProject.allprojects {
     repositories {
@@ -38,6 +38,16 @@ android {
         minSdkVersion 21
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlinOptions {
+        jvmTarget = "17"
+    }
 }
 
 dependencies {
