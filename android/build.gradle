@@ -8,11 +8,10 @@ buildscript {
     ext.kotlin_version = '2.0.20'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.2'
+        classpath 'com.android.tools.build:gradle:8.7.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -22,7 +21,7 @@ rootProject.allprojects {
     repositories {
         maven { url "file://$localMavenPath" }
         google()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -36,6 +35,7 @@ android {
     }
     defaultConfig {
         minSdkVersion 26
+        targetSdkVersion 35
     }
 
     compileOptions {
@@ -47,9 +47,11 @@ android {
         jvmTarget = "17"
     }
 }
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
+
 
 
 String aarPath = localMavenPath
